@@ -30,16 +30,17 @@ namespace baitapVN
         private void btnXoa_Click(object sender, EventArgs e)
         {
           
-            if (lvStudent.SelectedItems.Count > 0) // Kiểm tra có mục nào được chọn không
-                {
-            lvStudent.Items.Remove(lvStudent.SelectedItems[0]); // Xóa mục được chọn
-                MessageBox.Show("Đã xóa thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                MessageBox.Show("Vui lòng chọn một mục để xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-           
+            if (lvStudent.SelectedItems.Count == 0)
+    {
+        MessageBox.Show("Hãy chọn một mục để xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        return;
+    }
+
+    // Xóa mục được chọn
+    foreach (ListViewItem selectedItem in lvStudent.SelectedItems)
+    {
+        lvStudent.Items.Remove(selectedItem); // Xóa dựa trên đối tượng
+    }
         }
 
         private void btnSua_Click(object sender, EventArgs e)
